@@ -13,7 +13,7 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/glfw/glfw.git
   GIT_TAG 3.3.9
 )
-FetchContent_MakeAvailable(glfw);
+FetchContent_MakeAvailable(glfw)
 
 FetchContent_Declare(
   assimp
