@@ -641,8 +641,9 @@ int main(int argc, char* argv[]){
 
   Shader shader("../vert.glsl", "../frag.glsl");
   Camera camera(6.0f, 0.1f);
-
   glfwSetWindowUserPointer(window, &camera);
+  
+  Model monkey("../monkey.obj");
   
   glEnable(GL_DEPTH_TEST);
 
@@ -667,6 +668,12 @@ int main(int argc, char* argv[]){
     glm::mat4 model = glm::mat4(1.0f);
     glm::mat4 view = camera.GetViewMatrix();
     glm::mat4 projection = camera.GetProjectionMatrix();
+    
+    shader.Use();
+    shader.SetValue("model", model);
+    shader.SetValue("view", view);
+    shader.SetValue("projection", projection);
+    monkey.Draw(shader);
 
     glfwSwapBuffers(window);
   }
